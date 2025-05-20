@@ -41,7 +41,8 @@
     #errorMessage p {
       font-size: 18px;
     }
-    #errorMessage a {
+    /* 新增按钮样式，与返回首页按钮统一 */
+    .back-btn {
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
@@ -50,6 +51,7 @@
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
+      margin-right: 10px; /* 增加按钮间距 */
     }
   </style>
 </head>
@@ -62,12 +64,15 @@
     <img src="assets/images/logo.png" alt="404 图标">
     <h1>404 - 页面未找到</h1>
     <p>很抱歉，您访问的页面不存在。</p>
-    <p>请检查网址是否正确，或返回首页。</p>
-    <a href="index.html">返回首页</a>
+    <p>请检查网址是否正确，或选择以下方式返回：</p>
+    <!-- 新增回到上一页按钮，与返回首页按钮并列 -->
+    <a href="javascript:history.back()" class="back-btn">回到上一页</a>
+    <a href="index.html" class="back-btn">返回首页</a>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
+    // 原有粒子动画代码保持不变
     let scene, camera, renderer;
     let mainParticles, trailParticles;
     const PARTICLE_COUNT = 800;
