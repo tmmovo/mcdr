@@ -39,19 +39,56 @@
 		    max-height: 80%;
 		    box-shadow: 0 0 20px rgba(0, 0, 0, 0);
 		}
-	</style>
+	    	/* 强制进入按钮样式 */
+		#enterBtn {
+		    position: absolute;
+		    top: 24px;
+		    right: 24px;
+		    padding: 12px 24px;
+		    border: none;
+		    border-radius: 24px; /* 圆角边框 */
+		    background: #2563eb; /* 蓝紫色主色 */
+		    color: white;
+		    font-size: 16px;
+		    font-weight: 500;
+		    cursor: pointer;
+		    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); /* 按钮阴影 */
+		    transition: all 0.2s ease;
+		}
+
+		#enterBtn:hover {
+		    background: #1d4ed8; /* 悬停加深颜色 */
+		    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+		    transform: translateY(-1px); /* 轻微上移 */
+		}
+
+		#enterBtn:active {
+		    transform: translateY(0);
+		    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+		}
+    </style>
 </head>
 
 <body>
     <!-- 覆盖层容器 -->
     <div id="overlay">
         <img id="introGif" src="assets/images/logo.gif" alt="加载中...">
+	<button id="enterBtn" alt="页面一直没有自动关闭请点击">强制进入</button>
     </div>
 
     <script>
         // 获取元素
         const overlay = document.getElementById('overlay');
         const introGif = document.getElementById('introGif');
+	const enterBtn = document.getElementById('enterBtn');
+
+        // 按钮点击事件：立即隐藏覆盖层
+        enterBtn.addEventListener('click', () => {
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300); // 等待过渡动画完成
+        });
 
         // 当GIF加载完成后启动计时（避免未加载完成就隐藏）
         introGif.onload = function() {
